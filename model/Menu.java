@@ -1,3 +1,4 @@
+package model;
 public class Menu {
     private int id;
     private String name;
@@ -9,7 +10,7 @@ public class Menu {
     {
         this.setId(id);
         this.setName(name);
-        this.setPrice(price);
+        this.setPrice(price);   
         this.setCategory(category);
         this.setSize(size);
     }
