@@ -1,27 +1,21 @@
 package model;
 public class Menu {
+    private static int count=1;
     private int id;
     private String name;
     private double price;
     private String category;
     private char  size;
 
-    public Menu(int id, String name, double price, String category, char size)
+    public Menu(String name, double price, String category, char size)
     {
-        this.setId(id);
+        this.id = count++;
         this.setName(name);
         this.setPrice(price);   
         this.setCategory(category);
         this.setSize(size);
     }
 
-    public int getId() {
-        return id;
-    }
-
-    private void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -29,7 +23,13 @@ public class Menu {
 
     public void setName(String name) {
         // you can change unless u are a manager
-        this.name = name;
+        if(name == null || name.isBlank() || name.isEmpty())
+        {
+            this.name = "Unknown";
+        }else
+        {
+            this.name = name;
+        }
     }
 
     public double getPrice() {
