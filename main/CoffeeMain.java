@@ -9,6 +9,7 @@ import model.Menu;
 
 public class CoffeeMain {
     public static void main(String[] args) {
+        System.out.println("test");
 
         //  HashMap<Integer, String> cMap = new HashMap<Integer, String>();
         // cMap.put(1, "ant");

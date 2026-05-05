@@ -1,5 +1,8 @@
 package model;
-public class Customer {
+
+import interfaces.Displayable;
+
+public class Customer implements Displayable {
     private static int increase=1;
     private int id;
     private String name;
@@ -13,6 +16,8 @@ public class Customer {
         setPhone(phone);
         setBalance(balance);
     }
+
+    
     @Override
     public String toString() {
         return "Customer [id=" + id + ", name=" + name + ", phone=" + phone + ", balance=" + balance + "]";
@@ -47,6 +52,19 @@ public class Customer {
         {
             this.balance = balance;
         }
+    }
+
+
+    @Override
+    public void display() {
+        System.out.println(name);
+        System.out.println(phone);
+    }
+
+
+    @Override
+    public void displayName() {
+        System.out.println(name);
     }
    
     
