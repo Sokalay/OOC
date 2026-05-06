@@ -1,7 +1,8 @@
 package model;
+import interfaces.Buyable;
 import interfaces.Displayable;
 
-public class Staff implements Displayable{
+public class Staff implements Displayable, Buyable{
     
     int id;
     String name;
@@ -9,15 +10,16 @@ public class Staff implements Displayable{
 
     @Override
     public void display() {
-        System.out.println(id);
-        System.out.println(name);
-        System.out.println(phone);
+       
     }
     @Override
     public void displayName() {
-        System.out.println(name);
-        
+        System.out.println("hasd");
     }
-    
+    @Override
+    public void buy() {
+        System.out.println("buy");
+    }
+
     
 }
