@@ -1,15 +1,46 @@
 package main;
 
+import java.lang.classfile.CustomAttribute;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.TreeSet;
 
+import interfaces.Displayable;
+import model.Customer;
 import model.Menu;
+import model.Staff;
 
 public class CoffeeMain {
     public static void main(String[] args) {
-        System.out.println("test");
+        ArrayList<Displayable> list = new ArrayList<>();
+        
+        Staff s = new Staff(1,"staff1","12345");
+        s.setName("Hello");
+
+        Customer c = new Customer("Customer1", "12345678", 100);
+
+        list.add(s);
+        list.add(c);
+
+        if(list.get(0) instanceof Staff)
+        {
+            Staff s1 = (Staff) list.get(1);
+        }else
+        {
+            Staff s1 = (Staff) list.get(0);
+        }
+
+
+        // for (Displayable d : list) {
+        //     System.out.println("test");
+        //     d.display();
+
+        // }
+
+
+
+        // System.out.println("test");
 
         //  HashMap<Integer, String> cMap = new HashMap<Integer, String>();
         // cMap.put(1, "ant");

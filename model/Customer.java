@@ -1,8 +1,9 @@
 package model;
 
+import interfaces.Buyable;
 import interfaces.Displayable;
 
-public class Customer implements Displayable {
+public class Customer implements Displayable, Buyable {
     private static int increase=1;
     private int id;
     private String name;
@@ -57,14 +58,21 @@ public class Customer implements Displayable {
 
     @Override
     public void display() {
-        System.out.println(name);
-        System.out.println(phone);
+       
+       System.out.println(this.toString());
     }
 
 
     @Override
     public void displayName() {
         System.out.println(name);
+    }
+
+
+    @Override
+    public void buy() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'buy'");
     }
    
     
