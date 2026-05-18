@@ -1,19 +1,20 @@
 package model;
 
-import interfaces.Task;
+import java.util.Date;
+
+import interfaces.Role;
+import main.CoffeeShop;
 
 public class Cashier extends Staff{
-
-    public Cashier(int id, String name, String phone) {
-        super(id, name, phone);
+    public Cashier(String name,String password, String phone, int idNumber, double salary, Date startDate) {
+        super(name, password, phone, idNumber, salary, null);
     }
     @Override
-    public boolean can(String Action) {
-        if(Action.equals(CoffeeShop.CreateOrder))
-        {
+    public boolean can(String action) {
+        // TODO Auto-generated method stub
+        if (action.equals(CoffeeShop.createOrder) || action.equals(CoffeeShop.viewOrder)) {
             return true;
         }
         return false;
     }
-    
 }

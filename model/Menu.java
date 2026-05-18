@@ -1,34 +1,36 @@
 package model;
+
 public class Menu {
-    private static int count=1;
+    private static int number = 1;
     private int id;
-    private String name;
+    private String itemName;
     private double price;
     private String category;
-    private char  size;
 
-    public Menu(String name, double price, String category, char size)
-    {
-        this.id = count++;
-        this.setName(name);
-        this.setPrice(price);   
-        this.setCategory(category);
-        this.setSize(size);
+    public Menu(String itemName, double price, String category) {
+        this.id = number++;
+        this.itemName = itemName;
+        this.price = price;
+        this.category = category;
     }
 
-
-    public String getName() {
-        return name;
+    public static int getNumber() {
+        return number;
     }
 
-    public void setName(String name) {
-        // you can change unless u are a manager
-        if(name == null || name.isBlank() || name.isEmpty())
-        {
-            this.name = "Unknown";
-        }else
-        {
-            this.name = name;
+    public int getId() {
+        return id;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        if (itemName == null || itemName.isEmpty()) {
+            System.out.println("Invalid item name");
+        } else {
+            this.itemName = itemName;
         }
     }
 
@@ -37,47 +39,20 @@ public class Menu {
     }
 
     public void setPrice(double price) {
-        // you have to be a manager
-        if(price <3)
-        {
-            System.out.println("Price need to be bigger than or equal $3");
-            this.price = 3;
-        }else
-        {
+        //price >0 and <10
+        if (price < 0 && price >10) {
+            System.out.println("Price cannot be negative");
+        } else {
             this.price = price;
         }
     }
+
     public String getCategory() {
         return category;
     }
 
     public void setCategory(String category) {
-        // you need to be a manager
         this.category = category;
     }
-
-
-
-
-    public char getSize() {
-        return size;
-    }
-
-
-
-
-    public void setSize(char size) {
-        this.size = size;
-    }
-
-
-
-
-    @Override
-    public String toString() {
-        return "Menu [id=" + id + ", name=" + name + ", price=" + price + ", category=" + category + ",  size=" + size + "]";
-    }
-
-    
 
 }
