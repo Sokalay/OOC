@@ -15,6 +15,7 @@ public class Staff implements Role{
     private Date startDate;
     private Date endDate;
 
+    //register
     public Staff(String name,String password, String phone, int idNumber, double salary, Date startDate) {
         this.id = number++;
         this.setName(name);
@@ -24,15 +25,21 @@ public class Staff implements Role{
         this.setSalary(salary);
         this.setStartDate(startDate);
     }
+    //login
+    public Staff(String name,String password)
+    {
+        this.setName(name);
+        this.setPassword(password);
+    }
 
     //why?
     public static int getNumber() {
         return number;
     }
-    private String getName() {
+    public String getName() {
         return name;
     }
-    private String getPassword() {
+    public String getPassword() {
         return password;
     }
     public void setPassword(String password) {
@@ -93,4 +100,16 @@ public class Staff implements Role{
         // TODO Auto-generated method stub
         return false;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+      
+        Staff other = (Staff) obj;
+        if (!name.equals(other.name))
+            return false;
+        if (!password.equals(other.password))
+            return false;
+        return true;
+    }
+    
 }
