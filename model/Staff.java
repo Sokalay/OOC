@@ -1,115 +1,107 @@
 package model;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 import interfaces.Role;
 
-public class Staff implements Role{
-    private static int number=1;
-    private int id;
-    private String name;
+public class Staff extends Person implements Role {
+    private static int number = 1;
     private String password;
-    private String phone;
     private int idNumber;
     private double Salary;
     private Date startDate;
     private Date endDate;
 
-    //register
-    public Staff(String name,String password, String phone, int idNumber, double salary, Date startDate) {
-        this.id = number++;
-        this.setName(name);
+    // register
+    public Staff(String name, String password, String phone, int idNumber, double salary, Date startDate) {
+        super(number++, name, phone);
         this.setPassword(password);
-        this.setPhone(phone);
         this.setIdNumber(idNumber);
         this.setSalary(salary);
         this.setStartDate(startDate);
     }
-    //login
-    public Staff(String name,String password)
-    {
-        this.setName(name);
+
+    // login
+    public Staff(String name, String password) {
+        super(0, name, null);
         this.setPassword(password);
     }
 
-    //why?
     public static int getNumber() {
         return number;
     }
-    public String getName() {
-        return name;
-    }
+
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
-    private void setName(String name) {
-        //name need to be at least 4 letters, max 8 letters, cannot be empty or null
-        if (name.length() < 4 || name.length() > 8 || name.isEmpty() || name == null) {
-            System.out.println("Invalid name");
-            System.out.println("User 1 is ur default username");
-            this.name = "User 1";
+
+    @Override
+    public void setName(String name) {
+        // Staff name validation: must be 4 to 8 characters
+        if (name == null || name.isEmpty() || name.length() < 4 || name.length() > 8) {
+            System.out.println("Invalid staff name. Setting default to 'User 1'.");
+            super.setName("User 1");
         } else {
-            this.name = name;
-        }
-        
-    }
-    private String getPhone() {
-        return phone;
-    }
-    public void setPhone(String phone) {
-        //phone need to be 9 or 10 digits, cannot be empty or null start with 012, 011
-        if (phone.length() != 9 && phone.length() != 10) 
-        {
-            System.out.println("Invalid phone number");
-            System.out.println("User 1 is ur default phone number");
-            this.phone = "0123456789";
-        }else{
-                
-            this.phone = phone;
+            super.setName(name);
         }
     }
+
     public int getIdNumber() {
         return idNumber;
     }
+
     public void setIdNumber(int idNumber) {
         this.idNumber = idNumber;
     }
+
     public double getSalary() {
         return Salary;
     }
+
     public void setSalary(double salary) {
         Salary = salary;
     }
+
     public Date getStartDate() {
         return startDate;
     }
+
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
+
     public Date getEndDate() {
         return endDate;
     }
+
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+
     @Override
     public boolean can(String action) {
-        // TODO Auto-generated method stub
         return false;
     }
 
     @Override
     public boolean equals(Object obj) {
-      
+        if (!(obj instanceof Staff)) return false;
         Staff other = (Staff) obj;
-        if (!name.equals(other.name))
-            return false;
-        if (!password.equals(other.password))
-            return false;
+        if (name == null || other.name == null) return false;
+        if (!name.equals(other.name)) return false;
+        if (password == null || other.password == null) return false;
+        if (!password.equals(other.password)) return false;
         return true;
     }
-    
+    @Override
+    public void displayInfo() {
+        // TODO Auto-generated method stub
+        super.displayInfo();
+        System.out.println(" | ID Number: " + idNumber + " | Salary: " + Salary + " | Start Date: " + startDate + " | End Date: " + (endDate != null ? endDate : "N/A"));
+    }
 }

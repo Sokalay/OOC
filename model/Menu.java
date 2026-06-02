@@ -9,9 +9,9 @@ public class Menu {
 
     public Menu(String itemName, double price, String category) {
         this.id = number++;
-        this.itemName = itemName;
-        this.price = price;
-        this.category = category;
+        setItemName(itemName);
+        setPrice(price);
+        setCategory(category);
     }
 
     public static int getNumber() {
@@ -28,7 +28,8 @@ public class Menu {
 
     public void setItemName(String itemName) {
         if (itemName == null || itemName.isEmpty()) {
-            System.out.println("Invalid item name");
+            System.out.println("Invalid item name. Setting default to 'Espresso'");
+            this.itemName = "Espresso";
         } else {
             this.itemName = itemName;
         }
@@ -39,9 +40,10 @@ public class Menu {
     }
 
     public void setPrice(double price) {
-        //price >0 and <10
-        if (price < 0 && price >10) {
-            System.out.println("Price cannot be negative");
+        // Price must be between 0 (exclusive) and 10 (inclusive)
+        if (price <= 0 || price > 10) {
+            System.out.println("Invalid price: " + price + ". Setting default to 3.5");
+            this.price = 3.5;
         } else {
             this.price = price;
         }
@@ -52,7 +54,15 @@ public class Menu {
     }
 
     public void setCategory(String category) {
-        this.category = category;
+        if (category == null || category.isEmpty()) {
+            this.category = "Beverage";
+        } else {
+            this.category = category;
+        }
     }
 
+    @Override
+    public String toString() {
+        return String.format("[%d] %-15s ($%.2f) - %s", id, itemName, price, category);
+    }
 }
